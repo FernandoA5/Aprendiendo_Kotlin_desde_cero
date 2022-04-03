@@ -7,11 +7,38 @@ fun listas(){
     //LISTAS NOMUTABLES
     val listaNombres = listOf<String>("juan", "Enrique", "Camila")
     println(listaNombres)
+    println("-----------------------")
     //LISTAS MUTABLES
     val listaVacia = mutableListOf<String>()
     println(listaVacia)
+    println("-----------------------")
     listaVacia.add("Juan")
     println(listaVacia)
+    println("-----------------------")
+    val valorUsandoGet = listaVacia.get(0)
+    println(valorUsandoGet)
+    println("-----------------------")
+    val valorUsandoOperador = listaVacia[0]
+    println(valorUsandoOperador)
+    println("-----------------------")
+    val primerValor = listaNombres.first()
+    //ES OVBIO PARA QUE SIRVE ESTO
+    //val otraOpcion = listaNombres.firstOrNull()
+    println(primerValor)
+    println("-----------------------")
+    listaVacia.removeAt(0)
+    println(listaVacia)
+    println("-----------------------")
+    listaVacia.add("Enrrique")
+    println(listaVacia)
+    println("-----------------------")
+    listaVacia.removeIf { caracteres -> caracteres.length > 3 }
+    println(listaVacia)
+    println("-----------------------")
+    //ARRAYS
+    val arreglo = arrayOf(1, 2, 3, 4)
+    println("Nuestro arreglo: $arreglo")
+    println("Array to list: ${arreglo.toList()}")
 }
 /*
 fun operador_nullable(){
