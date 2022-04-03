@@ -1,8 +1,33 @@
 const val PI = 3.14159265
 fun main()
 {
-    listas()
+    
 }
+/*
+//fun miFuncion(nombre:String, apellido:String) = nombre + apellido
+fun ordenar_listas(){
+    val numerosLoteria = listOf(11, 22, 42, 56, 78, 66)
+    val loteriaOrdenada = numerosLoteria.sorted()
+    println(loteriaOrdenada)
+    val numerosLoteriaDesendientes = numerosLoteria.sortedDescending()
+    println(numerosLoteriaDesendientes)
+    val ordenarPorMultiplos = numerosLoteria.sortedBy{ numero -> numero < 50}
+    println(ordenarPorMultiplos)
+
+    val numerosAleatorios = numerosLoteria.shuffled()
+    println(numerosAleatorios)
+
+    //DIFERENCIA ENTRE sortedDescending y Reverse: El primero los ordena numéricamente, y el segundo solo los pone al revés de como estaba inicialmente
+    val numerosReversa = numerosLoteria.reversed()
+    println(numerosReversa)
+    //MAP NOS PERMITE CONVERTIR ELEMENTOS DE UN TIPO A OTRO
+    val mensajesNumeros = numerosLoteria.map{ numero -> "Tu número de lotería es: $numero"}
+    println(mensajesNumeros)
+
+    val numerosFiltrados = numerosLoteria.filter{ numero -> numero < 50}
+    println(numerosFiltrados)
+}
+
 fun listas(){
     //LISTAS NOMUTABLES
     val listaNombres = listOf<String>("juan", "Enrique", "Camila")
@@ -40,7 +65,6 @@ fun listas(){
     println("Nuestro arreglo: $arreglo")
     println("Array to list: ${arreglo.toList()}")
 }
-/*
 fun operador_nullable(){
     var nombre: String? = null
     val caracterNombre: Int = nombre?.length ?: 0
