@@ -1,7 +1,40 @@
 const val PI = 3.14159265
 fun main()
 {
-    ciclo_for()
+    listas()
+}
+fun listas(){
+    //LISTAS NOMUTABLES
+    val listaNombres = listOf<String>("juan", "Enrique", "Camila")
+    println(listaNombres)
+    //LISTAS MUTABLES
+    val listaVacia = mutableListOf<String>()
+    println(listaVacia)
+    listaVacia.add("Juan")
+    println(listaVacia)
+}
+/*
+fun operador_nullable(){
+    var nombre: String? = null
+    val caracterNombre: Int = nombre?.length ?: 0
+    println(caracterNombre)
+}
+
+fun clase_null(){
+    var nombre: String? = null
+    try{
+        throw NullPointerException("Referencia Nula")
+    }catch(e: NullPointerException){
+        println("Ha ocurrido un error")
+    } finally {
+        println("Esto es un finally")
+    } 
+    //EL !! es una mala práctica, lo que hace es asegurarle al compilador que esa variable nunca será nula, y si lo es, pues te jodiste.
+
+    val primero = 10
+    val segundo = 0
+    val resultado : Int = try {primero/segundo} catch(e: Exception){ 0 }
+    println(resultado)    
 }
 fun ciclo_for(){
     val listaCosas = listOf("Telefono", "Hamburguesa", "Dinero", "Esta");
@@ -14,7 +47,7 @@ fun ciclo_for(){
     val caracteresCosas = listaCosas.map {cosa -> cosa.length}
     println(caracteresCosas)
     println("-----------------------")
-    val listaFiltrada = caracteresCosas.filter {cosas -> caracteresCosas > 5}
+    val listaFiltrada = caracteresCosas.filter {caracteresCosas -> caracteresCosas > 5}
     println(listaFiltrada)
     
 }
@@ -72,10 +105,11 @@ fun condicionales(){
     println("-----------------------")
     val talla = 41
     val otro_mensaje= when(talla){
-        41, 43 -> "Talla: ${talla} disponible"
+        41, 42 -> "Talla: ${talla} disponible"
         43, 44 -> "Talla: No hay"
         45 -> "F"
         else -> "Tallas: Esta"
     }
     println(otro_mensaje)
 }
+ */
