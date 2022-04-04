@@ -2,6 +2,48 @@ const val PI = 3.14159265
 fun main(){
     
 }
+/*
+//ALSO
+fun usandoAlso(){
+    val moviles = mutableListOf("Google Pixel", "Google Pixel 2","Motorola", "Xiaomi", "Nokia").also{
+        lista -> println("El valor original de la lista es: $lista")
+    }.asReversed()
+    println(moviles)
+}
+//APPLY
+fun usandoApply(){
+    val moviles = mutableListOf("Google Pixel", "Google Pixel 2","Motorola", "Xiaomi", "Nokia").apply{
+        removeIf { movil -> movil.contains("Google")}
+    }
+    
+    println(moviles)
+
+    val colores : MutableList<String>? = mutableListOf("Amarillo", "Azul", "Rojo")
+    colores?.apply{
+        println("Colores: $this")
+        println("Cantidades: $size")
+    }
+}
+//RUN
+fun usandoRun(){
+    val moviles = mutableListOf("Google Pixel", "Google Pixel 2","Motorola", "Xiaomi", "Nokia")
+        .run{
+            removeIf {movil -> movil.contains("Google")}
+            this
+        }
+
+    println(moviles)
+}
+
+//WITH
+fun usandoWith(){
+    val colores = listOf("Azul", "Amarillo", "Rojo")
+    with(colores){
+        println("Los Colores son: $this")
+        println("Cantidad de colores: $size")
+    }
+}
+
 //FUNCIÓN LET
 fun letFunction(){
     var nombre: String? = null
@@ -14,7 +56,6 @@ fun letFunction(){
     }
 }
 //HIGH ORDER FUNCTIONS
-/*
 fun main(){
     val largoValorInicial=superFuncion(valorInicial = "Hola", block = {
         valor -> valor.length
