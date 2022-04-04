@@ -1,11 +1,36 @@
 const val PI = 3.14159265
+fun main(){
+    
+}
+//HIGh ORDER FUNCTIONS
+fun superFuncion(valorInicial: String, (String) -> Int): Int{
+    
+}
+/*
+//LAMBDAS
+fun lambdas(){
+    val milambda : (String) -> Int = { valor -> valor.length }  
+    val lambdaEjecutada = milambda("Hola Mundo")
+    println(lambdaEjecutada)
+
+    val saludos = listOf("Hola", "Hello", "Ciao")
+    val longitudesSaludos = saludos.map(milambda)
+    println(longitudesSaludos)
+}
 fun main()
 {
-    val fraseAleatoria="Puto el que lo lea".funciones()
-    val fraseOrdenadaAleatoriamente=fraseAleatoria
-    println(fraseOrdenadaAleatoriamente)
+    //FUNCIONES Y EXTENSIONES DE FUNCIONES
+    //val fraseAleatoria="Puto el que lo lea".funciones()
+    //val fraseOrdenadaAleatoriamente=fraseAleatoria
+    //println(fraseOrdenadaAleatoriamente)
+    //imprimirFrase(fraseAleatoria)
 
-    imprimirFrase(fraseAleatoria)
+    //TIPOS DE PARÁMETROS
+    imprimir_nombre(nombre="Fernando", apellido="Alcalá")
+}
+fun imprimir_nombre(nombre: String, segundoNombre: String = "",apellido: String){
+    println("El nombre es: $nombre $segundoNombre y el apellido es: $apellido")
+    
 }
 //FUNCIONES
 fun imprimirFrase(frase: String){
@@ -21,7 +46,6 @@ fun String.funciones(): String{
     }
 }
 //CONJUNTOS
-/*
 fun los_sets(){
     val vocalesRepetidas = setOf("a", "e", "i", "o", "u","a", "e", "i", "o", "u", "a", "e", "i", "o", "u")
     println(vocalesRepetidas)
