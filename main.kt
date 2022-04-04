@@ -1,18 +1,23 @@
 const val PI = 3.14159265
 fun main()
 {
-    val fraseAleatoria="Puto el que lo lea"
-    val fraseOrdenadaAleatoriamente=funciones(fraseAleatoria)
+    val fraseAleatoria="Puto el que lo lea".funciones()
+    val fraseOrdenadaAleatoriamente=fraseAleatoria
     println(fraseOrdenadaAleatoriamente)
+
+    imprimirFrase(fraseAleatoria)
 }
 //FUNCIONES
-fun funciones(frase: String): String{
+fun imprimirFrase(frase: String){
+    println("Tu frase es: $frase")
+}
+fun String.funciones(): String{
     val numeroAleatorio = 0..99
     val resultadoAleatorio = numeroAleatorio.random()
     return if(resultadoAleatorio.rem(2)==0){
-        frase.toUpperCase()
+        this.uppercase()
     } else {
-        frase.toLowerCase()
+        this.lowercase()
     }
 }
 //CONJUNTOS
