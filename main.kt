@@ -1,323 +1,78 @@
-const val PI = 3.14159265
+const val RESPUESTA_AFIRMATIVA = "✅"
+const val RESPUESTA_NEGATIVA = "❌"
+const val RESPUESTA_DUDOSA = "?"
+
+val respuestas = mapOf(
+    "Sí" to RESPUESTA_AFIRMATIVA,
+    "Es cierto" to RESPUESTA_AFIRMATIVA,
+    "Totalmente" to RESPUESTA_AFIRMATIVA,
+    "Sin duda" to RESPUESTA_AFIRMATIVA,
+    "Pregunta en otro momento" to RESPUESTA_DUDOSA,
+    "No puedo decirte en este momento" to RESPUESTA_DUDOSA,
+    "Puede que si o puede que no" to RESPUESTA_DUDOSA,
+    "No va a suceder" to RESPUESTA_NEGATIVA,
+    "No cuentes con ello" to RESPUESTA_NEGATIVA,
+    "Definitivamente no" to RESPUESTA_NEGATIVA,
+    "No lo creo" to RESPUESTA_NEGATIVA,
+)
+
 fun main(){
-    
-}
-/*
-//ALSO
-fun usandoAlso(){
-    val moviles = mutableListOf("Google Pixel", "Google Pixel 2","Motorola", "Xiaomi", "Nokia").also{
-        lista -> println("El valor original de la lista es: $lista")
-    }.asReversed()
-    println(moviles)
-}
-//APPLY
-fun usandoApply(){
-    val moviles = mutableListOf("Google Pixel", "Google Pixel 2","Motorola", "Xiaomi", "Nokia").apply{
-        removeIf { movil -> movil.contains("Google")}
-    }
-    
-    println(moviles)
+    println("Bola mágica, elige una respuesta")
+    println("1. Realizar Pregunta")
+    println("2. Revisar respuestas")
+    println("3. Salir")
 
-    val colores : MutableList<String>? = mutableListOf("Amarillo", "Azul", "Rojo")
-    colores?.apply{
-        println("Colores: $this")
-        println("Cantidades: $size")
+    val valorIngresado = readLine()
+
+    when(valorIngresado){
+        "1" -> realizarPregunta()
+        "2" -> mostrarRespuestas()
+        "3" -> salir()
+        else -> mostrarError()
     }
 }
-//RUN
-fun usandoRun(){
-    val moviles = mutableListOf("Google Pixel", "Google Pixel 2","Motorola", "Xiaomi", "Nokia")
-        .run{
-            removeIf {movil -> movil.contains("Google")}
-            this
-        }
-
-    println(moviles)
+fun salir(){
+    println("Adios")
 }
-
-//WITH
-fun usandoWith(){
-    val colores = listOf("Azul", "Amarillo", "Rojo")
-    with(colores){
-        println("Los Colores son: $this")
-        println("Cantidad de colores: $size")
+fun mostrarError(){
+    println("Pendejo, esa opción es invalida")
+}
+fun mostrarRespuestas(){
+    println("Selecciona una opción")
+    println("1. Todas")
+    println("2. Afirmativas")
+    println("3. Negativas")
+    println("4. Dudosas")
+    val opcionIngresada = readLine()
+    when(opcionIngresada){
+        "1" -> mostrarRespuestasPorTipo()
+        "2" -> mostrarRespuestasPorTipo(tipoRespuesta= RESPUESTA_AFIRMATIVA)
+        "3" -> mostrarRespuestasPorTipo(tipoRespuesta= RESPUESTA_NEGATIVA)
+        "4" -> mostrarRespuestasPorTipo(tipoRespuesta= RESPUESTA_DUDOSA)
+        else -> println("Respuesta Invalida")
     }
 }
-
-//FUNCIÓN LET
-fun letFunction(){
-    var nombre: String? = null
-    nombre?.let {
-        valor -> println("El nombre noes nulo, es: $valor")
-    }
-    nombre = "Luz"
-    nombre?.let {
-        valor -> println("El nombre noes nulo, es: $valor")
-    }
-}
-//HIGH ORDER FUNCTIONS
-fun main(){
-    val largoValorInicial=superFuncion(valorInicial = "Hola", block = {
-        valor -> valor.length
-    })
-    println(largoValorInicial)
-
-    val lambda = funcionInception("Lily")
-    val valorLambda: String = lambda()
-    println(valorLambda)
-}
-fun superFuncion(valorInicial: String, block: (String) -> Int): Int{
-    //AQUÏ EL RETURN ES NECESARIO
-    return block(valorInicial)
-}
-fun funcionInception(nombre: String) : () ->String{
-    return{
-        "Hola desde la lambda: $nombre"
+fun mostrarRespuestasPorTipo(tipoRespuesta: String ="todos"){
+    when(tipoRespuesta){
+        "todos" -> respuestas.keys.forEach { respuesta -> println(respuesta)}
+        RESPUESTA_AFIRMATIVA -> respuestas.filterValues { values -> values == RESPUESTA_AFIRMATIVA}
+            .also {
+                respuestasPositivas -> println(respuestasPositivas.keys)
+            }
+        RESPUESTA_NEGATIVA -> respuestas.filterValues { values -> values == RESPUESTA_NEGATIVA}
+            .also {
+                respuestasNegativas -> println(respuestasNegativas.keys)
+            }
+        RESPUESTA_DUDOSA -> respuestas.filterValues { values -> values == RESPUESTA_DUDOSA}
+            .also{ 
+                respuestasDudosas -> println(respuestasDudosas.keys)
+            }
     }
 }
-//LAMBDAS
-fun lambdas(){
-    val milambda : (String) -> Int = { valor -> valor.length }  
-    val lambdaEjecutada = milambda("Hola Mundo")
-    println(lambdaEjecutada)
-
-    val saludos = listOf("Hola", "Hello", "Ciao")
-    val longitudesSaludos = saludos.map(milambda)
-    println(longitudesSaludos)
+fun realizarPregunta(){
+    println("¿Qué pregunta deseas realizar?")
+    readLine()
+    println("La respuesta es: ")
+    val respuestaGenerada = respuestas.keys.random()
+    println(respuestaGenerada)
 }
-fun main()
-{
-    //FUNCIONES Y EXTENSIONES DE FUNCIONES
-    //val fraseAleatoria="Puto el que lo lea".funciones()
-    //val fraseOrdenadaAleatoriamente=fraseAleatoria
-    //println(fraseOrdenadaAleatoriamente)
-    //imprimirFrase(fraseAleatoria)
-
-    //TIPOS DE PARÁMETROS
-    imprimir_nombre(nombre="Fernando", apellido="Alcalá")
-}
-fun imprimir_nombre(nombre: String, segundoNombre: String = "",apellido: String){
-    println("El nombre es: $nombre $segundoNombre y el apellido es: $apellido")
-    
-}
-//FUNCIONES
-fun imprimirFrase(frase: String){
-    println("Tu frase es: $frase")
-}
-fun String.funciones(): String{
-    val numeroAleatorio = 0..99
-    val resultadoAleatorio = numeroAleatorio.random()
-    return if(resultadoAleatorio.rem(2)==0){
-        this.uppercase()
-    } else {
-        this.lowercase()
-    }
-}
-//CONJUNTOS
-fun los_sets(){
-    val vocalesRepetidas = setOf("a", "e", "i", "o", "u","a", "e", "i", "o", "u", "a", "e", "i", "o", "u")
-    println(vocalesRepetidas)
-    val numerosFavoritos = mutableSetOf(1, 2, 3, 4)
-    println(numerosFavoritos)
-    numerosFavoritos.add(5)
-    println(numerosFavoritos)
-    //DADO QUE LOS SETS NO TIENEN ÍNDICE, SE PASA COMO PARÄMETRO EL ELEMENTO QUE SE QUIERE ELIMINAR
-    numerosFavoritos.remove(5)
-    println(numerosFavoritos)
-
-    val valorDelSet = numerosFavoritos.firstOrNull{numero -> numero > 2}
-    println(valorDelSet)
-
-
-}
-
-fun los_maps(){
-    val edadSuperHeroes = mapOf(
-        "Ironman" to 35,
-        "Spiderman" to 23,
-        "Capitan America" to 99
-    )
-    println(edadSuperHeroes)
-    val edadSuperHeroesMutable = mutableMapOf(
-        "Ironman" to 35,
-        "Spiderman" to 23,
-        "Capitan America" to 99
-    )
-    println(edadSuperHeroesMutable)
-
-    edadSuperHeroesMutable.put("Wolverine", 45)
-    println(edadSuperHeroesMutable)
-
-    edadSuperHeroesMutable["Storm"] = 30
-    println(edadSuperHeroesMutable)
-
-    val edadIronman = edadSuperHeroesMutable["Ironman"]
-    println(edadIronman)
-    
-    edadSuperHeroesMutable.remove("Wolverine")
-    println(edadSuperHeroesMutable)
-
-    println(edadSuperHeroesMutable.keys)
-    println(edadSuperHeroesMutable.values)
-
-}
-//fun miFuncion(nombre:String, apellido:String) = nombre + apellido
-fun ordenar_listas(){
-    val numerosLoteria = listOf(11, 22, 42, 56, 78, 66)
-    val loteriaOrdenada = numerosLoteria.sorted()
-    println(loteriaOrdenada)
-    val numerosLoteriaDesendientes = numerosLoteria.sortedDescending()
-    println(numerosLoteriaDesendientes)
-    val ordenarPorMultiplos = numerosLoteria.sortedBy{ numero -> numero < 50}
-    println(ordenarPorMultiplos)
-
-    val numerosAleatorios = numerosLoteria.shuffled()
-    println(numerosAleatorios)
-
-    //DIFERENCIA ENTRE sortedDescending y Reverse: El primero los ordena numéricamente, y el segundo solo los pone al revés de como estaba inicialmente
-    val numerosReversa = numerosLoteria.reversed()
-    println(numerosReversa)
-    //MAP NOS PERMITE CONVERTIR ELEMENTOS DE UN TIPO A OTRO
-    val mensajesNumeros = numerosLoteria.map{ numero -> "Tu número de lotería es: $numero"}
-    println(mensajesNumeros)
-
-    val numerosFiltrados = numerosLoteria.filter{ numero -> numero < 50}
-    println(numerosFiltrados)
-}
-
-fun listas(){
-    //LISTAS NOMUTABLES
-    val listaNombres = listOf<String>("juan", "Enrique", "Camila")
-    println(listaNombres)
-    println("-----------------------")
-    //LISTAS MUTABLES
-    val listaVacia = mutableListOf<String>()
-    println(listaVacia)
-    println("-----------------------")
-    listaVacia.add("Juan")
-    println(listaVacia)
-    println("-----------------------")
-    val valorUsandoGet = listaVacia.get(0)
-    println(valorUsandoGet)
-    println("-----------------------")
-    val valorUsandoOperador = listaVacia[0]
-    println(valorUsandoOperador)
-    println("-----------------------")
-    val primerValor = listaNombres.first()
-    //ES OVBIO PARA QUE SIRVE ESTO
-    //val otraOpcion = listaNombres.firstOrNull()
-    println(primerValor)
-    println("-----------------------")
-    listaVacia.removeAt(0)
-    println(listaVacia)
-    println("-----------------------")
-    listaVacia.add("Enrrique")
-    println(listaVacia)
-    println("-----------------------")
-    listaVacia.removeIf { caracteres -> caracteres.length > 3 }
-    println(listaVacia)
-    println("-----------------------")
-    //ARRAYS
-    val arreglo = arrayOf(1, 2, 3, 4)
-    println("Nuestro arreglo: $arreglo")
-    println("Array to list: ${arreglo.toList()}")
-}
-fun operador_nullable(){
-    var nombre: String? = null
-    val caracterNombre: Int = nombre?.length ?: 0
-    println(caracterNombre)
-}
-
-fun clase_null(){
-    var nombre: String? = null
-    try{
-        throw NullPointerException("Referencia Nula")
-    }catch(e: NullPointerException){
-        println("Ha ocurrido un error")
-    } finally {
-        println("Esto es un finally")
-    } 
-    //EL !! es una mala práctica, lo que hace es asegurarle al compilador que esa variable nunca será nula, y si lo es, pues te jodiste.
-
-    val primero = 10
-    val segundo = 0
-    val resultado : Int = try {primero/segundo} catch(e: Exception){ 0 }
-    println(resultado)    
-}
-fun ciclo_for(){
-    val listaCosas = listOf("Telefono", "Hamburguesa", "Dinero", "Esta");
-    for (cosa in listaCosas){
-        println("La cosa aquí es: $cosa")
-    }
-    println("-----------------------")
-    listaCosas.forEach {cosa -> println("En la mano tienes: $cosa")}
-    println("-----------------------")
-    val caracteresCosas = listaCosas.map {cosa -> cosa.length}
-    println(caracteresCosas)
-    println("-----------------------")
-    val listaFiltrada = caracteresCosas.filter {caracteresCosas -> caracteresCosas > 5}
-    println(listaFiltrada)
-    
-}
-fun while_doWhile(){
-    var contador =38
-    while(contador > 0){
-        println("Contador: ${contador}")
-        contador--
-    }
-    do{
-        val numero_aleatorio=(0..100).random()
-        println("Número aleatorio: ${numero_aleatorio}")
-    }while(numero_aleatorio > 50)
-}
-fun introduccion(){
-    //INTRODUCCIÖN
-    var variable_mutable: Int= 15
-    val variable_inmutable: Int = 14
-    //TIPOS DE DATOS
-    val booleano = true
-    val numeroLong = 3L
-    val doble: Double = 2.7182
-    val flotante = 1.2f
-}
-fun condicionales(){
-    //CONDICIONALES
-    val nombre ="Maria"
-    if(nombre.isNotEmpty())
-    {
-        println("El largo de la variable es: ${nombre.length}")
-    }
-    else{
-        println("Error: La variable está vacía")
-    }
-    println("-----------------------")
-    val mensaje :String = if(nombre.length > 4) {"Tu nombre es largo"} 
-    else if(nombre.isEmpty()) {"No tienes nombre"} 
-    else {"Tu nombre es corto"} 
-    println(mensaje)
-    println("-----------------------")
-    //when
-    val nombreColor ="Verde"
-    when (nombreColor){
-        "Amarillo" -> println("Esto es amarillo")
-        "Rojo", "Carmesí" -> println("Esto es rojo o parece rojo")
-        else -> println("Ni idea de que es eso")
-    }
-    println("-----------------------")
-    val code = 16
-    when(code){
-        in 200..299 -> println("Es como 200")
-        in 400..500 -> println("Es un chingo")
-        else -> println("Ni idea cuanto sea, al tanteo digo que es como... ${code}")
-    }
-    println("-----------------------")
-    val talla = 41
-    val otro_mensaje= when(talla){
-        41, 42 -> "Talla: ${talla} disponible"
-        43, 44 -> "Talla: No hay"
-        45 -> "F"
-        else -> "Tallas: Esta"
-    }
-    println(otro_mensaje)
-}
- */
