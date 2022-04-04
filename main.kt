@@ -1,9 +1,22 @@
 const val PI = 3.14159265
 fun main()
 {
-  los_sets()
+    val fraseAleatoria="Puto el que lo lea"
+    val fraseOrdenadaAleatoriamente=funciones(fraseAleatoria)
+    println(fraseOrdenadaAleatoriamente)
+}
+//FUNCIONES
+fun funciones(frase: String): String{
+    val numeroAleatorio = 0..99
+    val resultadoAleatorio = numeroAleatorio.random()
+    return if(resultadoAleatorio.rem(2)==0){
+        frase.toUpperCase()
+    } else {
+        frase.toLowerCase()
+    }
 }
 //CONJUNTOS
+/*
 fun los_sets(){
     val vocalesRepetidas = setOf("a", "e", "i", "o", "u","a", "e", "i", "o", "u", "a", "e", "i", "o", "u")
     println(vocalesRepetidas)
@@ -20,7 +33,7 @@ fun los_sets(){
 
 
 }
-/*
+
 fun los_maps(){
     val edadSuperHeroes = mapOf(
         "Ironman" to 35,
