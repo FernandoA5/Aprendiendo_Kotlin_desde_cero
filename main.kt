@@ -2,11 +2,38 @@ const val PI = 3.14159265
 fun main(){
     
 }
-//HIGh ORDER FUNCTIONS
-fun superFuncion(valorInicial: String, (String) -> Int): Int{
-    
+//FUNCIÓN LET
+fun letFunction(){
+    var nombre: String? = null
+    nombre?.let {
+        valor -> println("El nombre noes nulo, es: $valor")
+    }
+    nombre = "Luz"
+    nombre?.let {
+        valor -> println("El nombre noes nulo, es: $valor")
+    }
 }
+//HIGH ORDER FUNCTIONS
 /*
+fun main(){
+    val largoValorInicial=superFuncion(valorInicial = "Hola", block = {
+        valor -> valor.length
+    })
+    println(largoValorInicial)
+
+    val lambda = funcionInception("Lily")
+    val valorLambda: String = lambda()
+    println(valorLambda)
+}
+fun superFuncion(valorInicial: String, block: (String) -> Int): Int{
+    //AQUÏ EL RETURN ES NECESARIO
+    return block(valorInicial)
+}
+fun funcionInception(nombre: String) : () ->String{
+    return{
+        "Hola desde la lambda: $nombre"
+    }
+}
 //LAMBDAS
 fun lambdas(){
     val milambda : (String) -> Int = { valor -> valor.length }  
