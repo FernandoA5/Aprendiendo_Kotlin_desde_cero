@@ -1,8 +1,26 @@
 const val PI = 3.14159265
 fun main()
 {
-    los_maps()
+  los_sets()
 }
+//CONJUNTOS
+fun los_sets(){
+    val vocalesRepetidas = setOf("a", "e", "i", "o", "u","a", "e", "i", "o", "u", "a", "e", "i", "o", "u")
+    println(vocalesRepetidas)
+    val numerosFavoritos = mutableSetOf(1, 2, 3, 4)
+    println(numerosFavoritos)
+    numerosFavoritos.add(5)
+    println(numerosFavoritos)
+    //DADO QUE LOS SETS NO TIENEN ÍNDICE, SE PASA COMO PARÄMETRO EL ELEMENTO QUE SE QUIERE ELIMINAR
+    numerosFavoritos.remove(5)
+    println(numerosFavoritos)
+
+    val valorDelSet = numerosFavoritos.firstOrNull{numero -> numero > 2}
+    println(valorDelSet)
+
+
+}
+/*
 fun los_maps(){
     val edadSuperHeroes = mapOf(
         "Ironman" to 35,
@@ -33,7 +51,6 @@ fun los_maps(){
     println(edadSuperHeroesMutable.values)
 
 }
-/*
 //fun miFuncion(nombre:String, apellido:String) = nombre + apellido
 fun ordenar_listas(){
     val numerosLoteria = listOf(11, 22, 42, 56, 78, 66)
