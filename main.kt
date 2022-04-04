@@ -53,9 +53,11 @@ fun mostrarRespuestas(){
     }
 }
 fun mostrarRespuestasPorTipo(tipoRespuesta: String ="todos"){
+    //val imprimirRespuestas : (Map<String, String>) -> Unit = { respuestas -> respuestas.keys.forEach { respuesta -> println(respuesta) }}
+
     when(tipoRespuesta){
         "todos" -> respuestas.keys.forEach { respuesta -> println(respuesta)}
-        RESPUESTA_AFIRMATIVA -> respuestas.filterValues { values -> values == RESPUESTA_AFIRMATIVA}
+        /*RESPUESTA_AFIRMATIVA -> respuestas.filterValues { values -> values == RESPUESTA_AFIRMATIVA}
             .also {
                 respuestasPositivas -> println(respuestasPositivas.keys)
             }
@@ -66,7 +68,10 @@ fun mostrarRespuestasPorTipo(tipoRespuesta: String ="todos"){
         RESPUESTA_DUDOSA -> respuestas.filterValues { values -> values == RESPUESTA_DUDOSA}
             .also{ 
                 respuestasDudosas -> println(respuestasDudosas.keys)
-            }
+            }*/
+        else -> respuestas.filterValues {values -> values == tipoRespuesta}.also{
+            respuesta -> println(respuesta.keys)
+        }
     }
 }
 fun realizarPregunta(){
